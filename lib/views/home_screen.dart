@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/components/product_card.dart';
 import 'package:my_flutter_app/model/product_model.dart';
 import 'package:my_flutter_app/services/api_service.dart';
 
@@ -17,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String errorMessae ="";
   List<Data> allProducts = [];
   ApiService apiService = ApiService();
+  final Set<int> cartIds = {};
 
   @override
   void initState(){
@@ -104,6 +106,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 fit: BoxFit.fitWidth
                 ),
               ) ,
+            ),
+
+            SizedBox(height: 16),
+            if(isLoading)
+              Center(child: CircularProgressIndicator())
+            else if(errorMessae !="")
+              Center(child: Text(errorMessae))
+            else
+              Expanded(
+                child: GridView.builder(
+                itemCount: allProducts.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:2, 
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.7,
+                ),
+                itemBuilder: (context, index){
+                  final product = allProducts[index];
+                  return ProductCard(product: product,);
+
+                  }
+              )
             ),
           ],
         ),
