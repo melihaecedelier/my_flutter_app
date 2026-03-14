@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_app/components/product_card.dart';
 import 'package:my_flutter_app/model/product_model.dart';
 import 'package:my_flutter_app/services/api_service.dart';
+import 'package:my_flutter_app/views/product_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -125,7 +126,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 itemBuilder: (context, index){
                   final product = allProducts[index];
-                  return ProductCard(product: product,);
+                  return GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, 
+                      MaterialPageRoute(
+                        builder: (context)=>ProductDetailScreen(
+                          product: product,
+                          cartIds: cartIds,
+                          ),
+                        ),
+                      );
+                    },
+                    child: ProductCard(product: product,));
 
                   }
               )

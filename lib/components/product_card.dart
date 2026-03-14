@@ -23,12 +23,15 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadiusGeometry.vertical(
-                            top: Radius.circular(12),
-                          ),
-                          child: Image.network(product.image ?? "")
-                          ),
+                        child: Hero(
+                          tag: product.id ?? 0,
+                          child: ClipRRect(
+                            borderRadius: BorderRadiusGeometry.vertical(
+                              top: Radius.circular(12),
+                            ),
+                            child: Image.network(product.image ?? "")
+                            ),
+                        ),
                         ),
 
                       Padding(
