@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/model/product_model.dart';
+import 'package:my_flutter_app/services/api_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,6 +13,37 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController =TextEditingController();
+  bool isLoading = false;
+  String errorMessae ="";
+  List<Data> allProducts = [];
+  ApiService apiService = ApiService();
+
+  @override
+  void initState(){
+    loadProducts();
+
+    super.initState();
+  }
+  Future<void> loadProducts () async{
+    try{
+        setState(() {
+          isLoading=true;
+    });
+    ProductModel resData = await apiService.fetchProducts();
+    setState(() {
+      allProducts = resData.data ?? [];
+    });
+    }catch(e){
+      setState(() {
+        errorMessae = "Failed to load products.";
+      });
+    }finally{
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
