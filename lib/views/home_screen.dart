@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Data> allProducts = [];
   ApiService apiService = ApiService();
   final Set<int> cartIds = {};
+  String searchQuery = "";
 
   @override
   void initState(){
@@ -50,6 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final filteredProducts = allProducts.where((product) {
+      final name = product.name ?? "";
+      return name.toUpperCase().contains(searchQuery.toUpperCase());
+    }).toList();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(child: Padding(
@@ -82,7 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
               "Find your perfect device.",
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
+
             SizedBox(height: 14,),
+
             Container(
               decoration: BoxDecoration(
                 color: Color(0xfff5f5f5),
@@ -96,8 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   border: InputBorder.none,
                   prefixIcon: Icon(Icons.search, color: Colors.grey,),
                   contentPadding: EdgeInsets.symmetric(vertical: 14)
-                  
                 ),
+                onChanged: (value){
+                  setState(() {
+                    searchQuery = value;
+                  });
+                },
               ),
             ),
 
@@ -123,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
             else
               Expanded(
                 child: GridView.builder(
-                itemCount: allProducts.length,
+                itemCount: filteredProducts.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount:2, 
                   crossAxisSpacing: 10,
@@ -131,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   childAspectRatio: 0.7,
                 ),
                 itemBuilder: (context, index){
-                  final product = allProducts[index];
+                  final product = filteredProducts[index];
                   return GestureDetector(
                     onTap: (){
                       Navigator.push(context, 
