@@ -1,17 +1,38 @@
-# my_flutter_app
 
-A new Flutter project.
+# My Flutter E-Commerce App - Meliha Ece Delier 
 
-## Getting Started
+Bu proje, bir API servisinden ürün verilerini çeken, listeleyen, arama ve filtreleme özellikleri sunan, ürün detaylarını gösteren ve temel bir sepet mantığı içeren modern bir e-ticaret uygulamasıdır.
 
-This project is a starting point for a Flutter application.
+## 📝 Kısa Açıklama
+Uygulama, harici bir API (wantapi.com) üzerinden ürünleri dinamik olarak çeker. Kullanıcılar ana ekranda ürünleri arayabilir, ürün kartlarına tıklayarak detaylı özelliklere ulaşabilir ve ürünleri sepetlerine ekleyip çıkarabilirler. Tasarımda Material Design prensipleri ve kullanıcı dostu bir arayüz (UI) hedeflenmiştir.
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Kullanılan Flutter Sürümü
+- **SDK:** `^3.11.1` (veya üzeri Dart SDK uyumlu sürümler)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🛠 Kullanılan Başlıca Paketler
+- `http`: API üzerinden veri çekmek için kullanıldı.
+- `cupertino_icons`: iOS stili ikonlar için.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🏃 Çalıştırma Adımları
+
+Projeyi kendi ortamınızda çalıştırmak için aşağıdaki adımları sırasıyla uygulayın:
+
+1. **Bağımlılıkları Yükleyin:**
+   Terminali açın ve proje dizininde şu komutu çalıştırın:
+   ```bash
+   flutter pub get
+
+```
+
+2. **Cihazınızı Hazırlayın:**
+Bir emülatör başlatın veya fiziksel bir cihaz bağlayın.
+3. **Uygulamayı Başlatın:**
+Aşağıdaki komutla projeyi ayağa kaldırın:
+```bash
+flutter run
+
+```
+
+*Not: Uygulamanın verileri çekebilmesi için cihazın aktif bir internet bağlantısına sahip olması gerekmektedir.*
+
+```
