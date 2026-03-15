@@ -87,6 +87,18 @@ class _ProductDetailScreenState extends State <ProductDetailScreen> {
                         setState(() {
                           widget.cartIds.add(widget.product.id ?? 0);
                         });
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Added to cart."),
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Colors.green,
+                          margin: EdgeInsets.only(
+                            bottom: 80,
+                            left: 20,
+                            right: 20,
+                          ),
+                          )
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
