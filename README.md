@@ -35,4 +35,3 @@ flutter run
 
 *Not: Uygulamanın verileri çekebilmesi için cihazın aktif bir internet bağlantısına sahip olması gerekmektedir.*
 
-```
