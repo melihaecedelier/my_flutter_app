@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter_app/components/product_card.dart';
 import 'package:my_flutter_app/model/product_model.dart';
 import 'package:my_flutter_app/services/api_service.dart';
+import 'package:my_flutter_app/views/cart_screen.dart';
 import 'package:my_flutter_app/views/product_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,14 +60,19 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Discover",style: TextStyle(
+                Text("Discover",
+                style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.5,
                 ),
                 ),
 
-                IconButton(onPressed: () {},
+                IconButton(onPressed: () {
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=> CartScreen(products: allProducts, cartIds: cartIds))
+                  );
+                },
                 iconSize: 32,
                 icon: Icon(Icons.shopping_bag_outlined))
               ],
